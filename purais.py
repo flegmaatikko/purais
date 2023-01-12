@@ -426,7 +426,7 @@ def main(args):
     kvp = args.kvp
     latest = args.latest
 
-    if out_format == "jsonais" and channel is None:
+    if out_format == "jsonais" and station_name is None:
         raise Exception("Station-name must be given when jsonais output format is used.")
 
     # Assuming we receive max 20 messages/second
@@ -538,9 +538,9 @@ Convert AIVDM messages to jsonais
 EXAMPLES
     data_source | {0} --out-format raw --channel A
     data_source | {0} --out-format json --hold-secs 5 --kvp repeat_indicator,eq,0
-    data_source | {0} --station-name testing --latest
-    data_source | {0} --station-name testing --kvp shiptype,eq,34,36 --channel B --hold-secs 60 --latest
-    data_source | {0} --station-name testing --kvp lat,gt,59.4 --kvp lat,lt,60.2 --kvp lon,gt,24.4 --kvp lon,lt,25.3 --hold-secs 5 --latest
+    data_source | {0} --out-format jsonais --station-name testing --latest
+    data_source | {0} --out-format jsonais --station-name testing --kvp shiptype,eq,34,36 --channel B --hold-secs 60 --latest
+    data_source | {0} --out-format jsonais --station-name testing --kvp lat,gt,59.4 --kvp lat,lt,60.2 --kvp lon,gt,24.4 --kvp lon,lt,25.3 --hold-secs 5 --latest
 
         """.format(os.path.basename(__file__))
 
